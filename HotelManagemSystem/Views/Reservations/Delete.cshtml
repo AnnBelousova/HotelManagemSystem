@@ -1,0 +1,55 @@
+﻿@model HotelManagemSystem.Models.Reservation
+
+    <body style="background-color:lightgrey">
+        <br />
+        <h4 style="font-weight:bold;">Delete reservation</h4>
+        <hr />
+        <hr />
+        <div>
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Price)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.ArrivalDateTime)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.ArrivalDateTime)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.DepartureDateTime)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.DepartureDateTime)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.NumberOfGuests)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.NumberOfGuests)
+                </dd>
+            </dl>
+
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="Id" />
+                <input type="submit" value="Delete" class="btn btn-danger" />
+                <a asp-action="Index">Back to List</a>
+            </form>
+        </div>
+        </body>

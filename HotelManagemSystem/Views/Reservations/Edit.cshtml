@@ -1,0 +1,76 @@
+﻿@model HotelManagemSystem.Models.ReservationViewModel
+
+<body style="background-color:lightgrey">
+    <br />
+    <h4 style="font-weight:bold;">Edit reservation</h4>
+    <hr />
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label"></label>
+                    <select asp-for="RoomTypeId" class="form-control">
+                        <option value="">Select Room Type</option>
+                        @foreach (RoomType rt in ViewBag.RoomType)
+                        {
+                            <option value="@rt.RoomTypeId">@rt.Name</option>
+                        }
+                    </select>
+                    @*                <input asp-for="RoomType" class="form-control" />
+                        <span asp-validation-for="RoomType" class="text-danger"></span>*@
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label"></label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ArrivalDate" class="control-label"></label>
+                    <input id="datepicker1" asp-for="ArrivalDate" class="form-control" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}" required="" />
+                    <span asp-validation-for="ArrivalDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DepartureDate" class="control-label"></label>
+                    <input id="datepicker2" asp-for="DepartureDate" class="form-control" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}" required="" />
+                    <span asp-validation-for="DepartureDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NumberOfGuests" class="control-label"></label>
+                    <input asp-for="NumberOfGuests" class="form-control" />
+                    <span asp-validation-for="NumberOfGuests" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript" src="/reservation/js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="/reservation/js/wickedpicker.js"></script>
+    <script type="text/javascript">
+        $('.timepicker').wickedpicker({ twentyFour: false });
+    </script>
+
+    <link rel="stylesheet" href="/reservation/css/jquery-ui.css" />
+    <script src="/reservation/js/jquery-ui.js"></script>
+    <script>
+        var $j = jQuery.noConflict();
+        $j("#datepicker1,#datepicker2").datepicker();
+    </script>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+</body>

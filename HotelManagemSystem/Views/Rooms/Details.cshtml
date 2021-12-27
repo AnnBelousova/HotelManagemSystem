@@ -1,0 +1,46 @@
+﻿@model HotelManagemSystem.Models.Room
+
+    <body style="background-color:lightgrey">
+        <div>
+            <br />
+            <h4 style="font-weight:bold;">Room @Html.DisplayFor(model => model.RoomNo)</h4>
+            <hr />
+            <hr />
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Description):
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Price):
+                </dt>
+                <dd class="col-sm-10">
+                    $ @Html.DisplayFor(model => model.Price) per night
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.RoomCapacity):
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.RoomCapacity)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.RoomType):
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.RoomType.Name)
+                </dd>
+            </dl>
+        </div>
+        <div class="col-sm-4">
+            <img style="max-width:200%; max-height:200%;" src="/images/@ViewBag.ImageFilename"
+                 alt="Image"
+                 class="img-responsive center-block" />
+        </div>
+        <br />
+        <div>
+            <a style="margin:10px" asp-action="Index">Back to List</a>
+        </div>
+    </body>

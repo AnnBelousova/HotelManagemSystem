@@ -1,0 +1,100 @@
+﻿@model HotelManagemSystem.Models.ReservationViewModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Tourists Reservation Form template Responsive, Login form web template,Flat Pricing tables,Flat Drop downs Sign up Web Templates,
+ Flat Web Templates, Login sign up Responsive web template, SmartPhone Compatible web template, free web designs for Nokia, Samsung, LG, SonyEricsson, Motorola web design">
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- Custom Theme files -->
+    <link href="/reservation/css/font-awesome.css" rel="stylesheet">
+    <link href="/reservation/css/wickedpicker.css" rel="stylesheet" type='text/css' media="all" />
+    <link href="/reservation/css/style.css" rel='stylesheet' type='text/css' />
+    <!--fonts-->
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+
+
+    <!--//fonts-->
+</head>
+<body>
+    <h1> Tourists Reservation Form </h1>
+    <div class="bg-agile">
+        <div class="book-reservation">
+            @using (Html.BeginForm("Create", "Reservations", FormMethod.Post))
+            {
+                Html.AntiForgeryToken();
+                <div class="form-date-w3-agileits">
+                    <label><i class="fa fa-user" aria-hidden="true"></i> Name :</label>
+                    <input type="text" name="Name" placeholder="Your name" required="" />
+                </div>
+                <div class="form-date-w3-agileits">
+                    <label><i class="fa fa-envelope" aria-hidden="true"></i> Email :</label>
+                    <input type="email" name="Email" placeholder="Your email" required="" />
+                </div>
+                <div class="form-date-w3-agileits">
+                    <label><i class="fa fa-calendar" aria-hidden="true"></i> Arrival Date :</label>
+                    <input id="datepicker1" name="ArrivalDate" type="text" value="mm/dd/yyyy" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}" required="">
+                </div>
+                <div class="form-date-w3-agileits">
+                    <label><i class="fa fa-calendar" aria-hidden="true"></i> Departure Date :</label>
+                    <input id="datepicker2" name="DepartureDate" type="text" value="mm/dd/yyyy" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}" required="">
+                </div>
+                <div class="form-date-w3-agileits">
+                    <label><i class="fa fa-home" aria-hidden="true"></i> Choose a Room :</label>
+                    <select asp-for="RoomTypeId" class="select">
+                        <option value="">select a type</option>
+                        @foreach (RoomType c in ViewBag.RoomType)
+                        {
+                            if (ViewBag.Room != null && ViewBag.Room.RoomTypeId == c.RoomTypeId)
+                            {
+                                <option selected="" value="@c.RoomTypeId">@c.Name</option>
+                            }
+                            else
+                            {
+                                <option value="@c.RoomTypeId">@c.Name</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="form-date-w3-agileits">
+                    <label><i class="fa fa-users" aria-hidden="true"></i> No.of People :</label>
+                    @Html.DropDownListFor(n => n.NumberOfGuests, new SelectList(ViewBag.Guests, "Value", "Text"), new { @class = "select" })
+                </div>
+@*                <div class="form-date-w3-agileits" style="margin-left:25%; margin-top:20px">
+                    <label><i class="fa fa-money" aria-hidden="true"></i> Price :</label>
+                    <input type="number" name="Price" placeholder="Price" required="" />
+                </div>*@
+                @if (ViewBag.Room != null)
+                {
+                    <input type="hidden" name="roomid" value="@ViewBag.Room.RoomId" />
+                }
+                <div class="clear"> </div>
+                <div class="make">
+                    <input class="btn btn-dark"  style="background-color: #a71930; border:none;" type="submit" value="Make a Reservation">
+                </div>
+            }
+        </div>
+    </div>
+    <script type="text/javascript" src="/reservation/js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="/reservation/js/wickedpicker.js"></script>
+    <script type="text/javascript">
+        $('.timepicker').wickedpicker({ twentyFour: false });
+    </script>
+    <!-- Calendar -->
+    <link rel="stylesheet" href="/reservation/css/jquery-ui.css" />
+    <script src="/reservation/js/jquery-ui.js"></script>
+    <script>
+        var $j = jQuery.noConflict();
+        $j("#datepicker1,#datepicker2").datepicker();
+    </script>
+</body>
+</html>

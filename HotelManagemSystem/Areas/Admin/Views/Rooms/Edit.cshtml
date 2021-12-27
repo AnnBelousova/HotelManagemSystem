@@ -1,0 +1,56 @@
+﻿@model HotelManagemSystem.Models.Room
+
+<body style="background-color:lightgrey">
+        <br />
+        <h4 style="font-weight:bold;">Edit room @Html.DisplayFor(model => model.RoomNo)</h4>
+        <hr />
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="RoomId" />
+                    <div class="form-group">
+                        <label asp-for="RoomNo" class="control-label"></label>
+                        <input asp-for="RoomNo" class="form-control" />
+                        <span asp-validation-for="RoomNo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description" class="control-label"></label>
+                        <input asp-for="Description" class="form-control" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Price" class="control-label"></label>
+                        <input asp-for="Price" class="form-control" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="RoomCapacity" class="control-label"></label>
+                        <input asp-for="RoomCapacity" class="form-control" />
+                        <span asp-validation-for="RoomCapacity" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="RoomTypeId">RoomType</label>
+                        <select asp-for="RoomTypeId" class="form-control">
+                            <option value="">select a type</option>
+                            @foreach (RoomType rt in ViewBag.RoomTypes)
+                            {
+                                <option value="@rt.RoomTypeId">@rt.Name</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-dark">Save</button>
+                        <a asp-controller="Home" asp-action="Index" class="btn btn-dark">Cancel</a>
+                    </div>
+
+                    <div>
+                        <a asp-action="Index">Back to List</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+</body>
+
+

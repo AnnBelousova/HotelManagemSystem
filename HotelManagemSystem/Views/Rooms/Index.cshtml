@@ -1,0 +1,83 @@
+﻿@model IEnumerable<HotelManagemSystem.Models.Room>
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Tourists Reservation Form template Responsive, Login form web template,Flat Pricing tables,Flat Drop downs Sign up Web Templates,
+ Flat Web Templates, Login sign up Responsive web template, SmartPhone Compatible web template, free web designs for Nokia, Samsung, LG, SonyEricsson, Motorola web design">
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- Custom Theme files -->
+    <link href="/reservation/css/font-awesome.css" rel="stylesheet">
+    <link href="/reservation/css/wickedpicker.css" rel="stylesheet" type='text/css' media="all" />
+    <link href="/css/style_rooms.css" ge rel='stylesheet' type='text/css' />
+    <!--fonts-->
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+</head>
+<body>
+
+
+    <table class="table" style="margin-top: 20px; color: white;">
+        <thead>
+            <tr style="font-family: sans-serif; text-transform: uppercase; background-color: rgba(10, 10, 10, 0.74)">
+                <th>
+                    @Html.DisplayNameFor(model => model.RoomNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RoomCapacity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RoomType)
+                </th>
+                <th>
+                </th>
+                <th>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr style="background-color: rgba(10, 10, 10, 0.30)">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RoomNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        $ @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RoomCapacity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RoomType.Name)
+                    </td>
+                    <td>
+                        <a asp-action="ReserveRoom" class="btn btn-dark" style="margin-right: 5px;" asp-route-id="@item.RoomId">Add</a>
+                        <a asp-action="Details" class="btn btn-dark" asp-route-id="@item.RoomId">Details</a>
+                    </td>
+                    <td>
+                        <a asp-action="Edit" class="btn btn-light" asp-route-id="@item.RoomId">Edit</a>
+                        <a asp-action="Delete" class="btn btn-light" asp-route-id="@item.RoomId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <br />
+    <div>
+        <a asp-action="Create" class="btn btn-light">Add Room</a>
+    </div>
+</body>
+</html>

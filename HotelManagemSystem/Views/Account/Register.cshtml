@@ -1,0 +1,72 @@
+﻿@model RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Tourists Reservation Hotel">
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- Custom Theme files -->
+    <link href="/reservation/css/font-awesome.css" rel="stylesheet">
+    <link href="/reservation/css/wickedpicker.css" rel="stylesheet" type='text/css' media="all" />
+    <link href="/css/style_home.css" ge rel='stylesheet' type='text/css' />
+    <!--fonts-->
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+</head>
+<body>
+
+</body>
+</html>
+
+<h1 style="text-align:left; color:white; font-family:sans-serif; font-weight:bold; font-size:30px">Register</h1>
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<form method="post" asp-action="Register">
+    <div class="form-group row">
+        <div class="col-sm-2"  style="font-family:sans-serif; font-weight:bold; font-size:17px"><label>Username:</label></div>
+        <div class="col-sm-4">
+            <input type="text" asp-for="Username"
+                   class="form-control" />
+        </div>
+        <div class="col">
+            <span asp-validation-for="Username"
+                  class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-2"  style="font-family:sans-serif; font-weight:bold; font-size:17px"><label>Password:</label></div>
+        <div class="col-sm-4">
+            <input type="password" asp-for="Password"
+                   class="form-control" />
+        </div>
+        <div class="col">
+            <span asp-validation-for="Password"
+                  class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-2" style="font-family:sans-serif; font-weight:bold; font-size:17px"><label>Confirm Password:</label></div>
+        <div class="col-sm-4">
+            <input type="password" asp-for="ConfirmPassword"
+                   class="form-control" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset-2 col-sm-4">
+            <button type="submit" class="btn btn-light">Register</button>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="offset-2 col-sm-4" style="color:white; font-size:17px">
+            Already registered? <a asp-action="LogIn" style="color:white; font-size:17px">Log In</a>
+        </div>
+    </div>
+
+</form>
